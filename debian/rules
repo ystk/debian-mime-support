@@ -33,8 +33,6 @@ binary-indep:
 	install -m 644 mailcap.order   		debian/tmp/etc/
 	install -m 644 mailcap.man		debian/tmp/usr/share/man/man5/mailcap.5
 	install -m 644 mailcap.order.man	debian/tmp/usr/share/man/man5/mailcap.order.5
-#	install -m 755 install-mime		debian/tmp/usr/sbin/
-#	install -m 644 install-mime.man		debian/tmp/usr/share/man/man8/install-mime.8
 	install -m 755 update-mime		debian/tmp/usr/sbin/
 	install -m 644 update-mime.man		debian/tmp/usr/share/man/man8/update-mime.8
 	install -m 755 run-mailcap		debian/tmp/usr/bin/
@@ -49,6 +47,7 @@ binary-indep:
 	install -m 755 debian/postinst		debian/tmp/DEBIAN/postinst
 	install -m 755 debian/prerm		debian/tmp/DEBIAN/prerm
 	install -m 644 debian/conffiles		debian/tmp/DEBIAN/conffiles
+	install -m 644 debian/triggers		debian/tmp/DEBIAN/triggers
 	cd debian/tmp/usr/share/man; gzip -9fv */*
 	cd debian/tmp/usr/share/doc/$(package); gzip -9v *
 	cd debian/tmp/usr/share/doc/$(package); gunzip copyright.gz

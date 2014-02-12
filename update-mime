@@ -2,7 +2,7 @@
 ###############################################################################
 #
 #  Update-MIME:  Install programs into "/etc/mailcap", resolve conflicts,
-#				 auto-uninstall, make dinner, and wash dishes.
+#                auto-uninstall, make dinner, and wash dishes.
 #
 #  Written by Brian White <bcwhite@pobox.com>.
 #
@@ -25,7 +25,29 @@ $mailcap	= "/etc/mailcap";
 $mailcapdef	= "/usr/lib/mime/mailcap";
 $mimedir	= "/usr/lib/mime/packages";
 $orderfile	= "/etc/mailcap.order";
-$defpriority= 5;
+$defpriority    = 5;
+$localgen	= 0;
+
+
+# If the call comes from dpkg, only accept it if --triggered is passed
+# This is so that we don't get useless calls from packages' postinsts
+# that call update-mime due to dh_installmime adding that call for
+# when there was no triggers support.
+#
+# When this 'hack' is removed, mime-support's postinst should be updated
+# to not pass --triggered anymore in 'triggered'.
+if ($ENV{"DPKG_RUNNING_VERSION"} ne "" && $ARGV[0] ne "--triggered") {
+    exit (0);
+}
+
+
+# Allow local run
+if ($ARGV[0] eq "--local") {
+    $conffile	= "$ENV{HOME}/.update-mime.conf";
+    $mailcap	= "$ENV{HOME}/.mailcap";
+    $orderfile	= "$ENV{HOME}/.mailcap.order";
+    $localgen	= 1;
+}
 
 
 #

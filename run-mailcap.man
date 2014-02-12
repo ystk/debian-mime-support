@@ -58,7 +58,7 @@ All options are in the form --<opt>=<value>.
 Performs the specified action on the files.  Valid actions are
 .IR view ,
 .IR cat
-(like view but never paged) ,
+(uses only "copiousoutput" rules and sends output to STDOUT) ,
 .IR compose ,
 .IR composetyped ,
 .I edit

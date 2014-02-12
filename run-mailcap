@@ -10,7 +10,7 @@
 ###############################################################################
 
 
-$debug=0;
+$debug=($ENV{RUN_MAILCAP_DEBUG} || 0);
 $norun=0;
 $nopager=0;
 $etcmimetyp="/etc/mime.types";
@@ -357,16 +357,19 @@ foreach (@ARGV) {
     }
 }
 
+# Pass --debug to sub-calls to this program.
+$ENV{RUN_MAILCAP_DEBUG} = 1 if $debug;
+
 unless ($action) {
-       if ($0 =~ m!(^|/)view$!)     { $action="view";   }
-    elsif ($0 =~ m!(^|/)see$!)      { $action="view";   }
-    elsif ($0 =~ m!(^|/)cat$!)      { $action="cat";    }
-    elsif ($0 =~ m!(^|/)edit$!)     { $action="edit";   }
-    elsif ($0 =~ m!(^|/)change$!)   { $action="edit";   }
-    elsif ($0 =~ m!(^|/)compose$!)  { $action="compose";}
-    elsif ($0 =~ m!(^|/)print$!)    { $action="print";  }
-    elsif ($0 =~ m!(^|/)create$!)   { $action="compose";}
-    else                            { $action="view";   }
+       if ($0 =~ m!(^|/)(mime-)?view$!)     { $action="view";   }
+    elsif ($0 =~ m!(^|/)(mime-)?see$!)      { $action="view";   }
+    elsif ($0 =~ m!(^|/)(mime-)?cat$!)      { $action="cat";    }
+    elsif ($0 =~ m!(^|/)(mime-)?edit$!)     { $action="edit";   }
+    elsif ($0 =~ m!(^|/)(mime-)?change$!)   { $action="edit";   }
+    elsif ($0 =~ m!(^|/)(mime-)?compose$!)  { $action="compose";}
+    elsif ($0 =~ m!(^|/)(mime-)?print$!)    { $action="print";  }
+    elsif ($0 =~ m!(^|/)(mime-)?create$!)   { $action="compose";}
+    else                                    { $action="view";   }
 }
 
 

@@ -1,8 +1,11 @@
 #! /bin/sh -e
 
 
-#if [ "$1" = "configure" ]; then
-#fi
+# dpkg triggers support for update-mime
+if [ "$1" = "triggered" ]; then
+    test -x /usr/sbin/update-mime && /usr/sbin/update-mime --triggered
+    exit 0
+fi
 
 
 # Remove the old status directory (and any orphaned install-mime program)
@@ -18,5 +21,5 @@ update-alternatives \
 
 # Run the update program
 if [ -x /usr/sbin/update-mime ]; then
-    update-mime
+    /usr/sbin/update-mime --triggered
 fi

@@ -2,7 +2,7 @@
 .\" Update-mime and this manpage were written by Brian White and
 .\" have been placed in the public domain (the only true "free").
 .\"
-.TH UPDATE-MIME 8 "16th Jul 2006" "Debian Project" "Update MIME Programs"
+.TH UPDATE-MIME 8 "3rd Sep 2010" "Debian Project" "Update MIME Programs"
 .SH NAME
 update\-mime \- create or update MIME information
 .SH SYNOPSIS
@@ -15,6 +15,13 @@ updates the
 .B /etc/mailcap
 file to reflect mime information changed by a Debian package during
 installation or removal.
+
+.SS OPTIONS
+.BI \-\-local
+Generate files in the current user's home directory instead of /etc.
+This allows users to create a custom ordering configuration and get
+a complete ~/.mailcap file out of it.
+
 .SH OVERRIDING ORDER
 The order of entries in the
 .I /etc/mailcap
@@ -23,6 +30,7 @@ file can be altered by editing the
 file.  Please see the
 .BR mailcap.order(5)
 man page for more information.
+
 .SH CREATING ENTRIES
 To create entries in the mailcap file, packages need to create a file
 in the
