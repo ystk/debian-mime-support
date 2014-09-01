@@ -1,3 +1,136 @@
+mime-support (3.56) unstable; urgency=medium
+
+  * Media types added:
+  e47e5a6 application/vnd.debian.binary-package
+
+  * Mailcap:
+  e47e5a6 Replaced a/x-debian-package with a/vnd.debian.binary-package.
+
+ -- Charles Plessy <plessy@debian.org>  Sun, 25 May 2014 09:36:07 +0900
+
+mime-support (3.55) unstable; urgency=low
+
+  * Media types removed:
+
+  92def2a application/x-font-woff       Closes: #727156
+  c1797d2 application/x-md5             Closes: #720619
+  fad5967 application/x-sha1            Closes: #720619
+  a71f2b0 text/x-vcard                  Closes: #674670
+
+  * Media types added:
+
+  0d95409 application/font-sfnt
+  0d95409 application/font-tdpfr
+  0f12ec4 application/font-woff
+  020388a application/gzip              Closes: #589991, 688872
+  77eee72 application/oebps-package+xml    See: #712054
+  ae8262a application/x-font-pcf        Closes: #727171
+  020388a application/zlib              Closes: #589991, 688872
+  a71f2b0 text/vcard                    Closes: #674670
+
+  * Changed associations of file suffixes with media types:
+
+  ae8262a application/x-font: removed pcf extensions.
+  46df3ed application/vnd.visio: added vst vsw vss
+  1a69660 application/x-ns-proxy-autoconfig: removed dat, Closes: #418564
+
+  * Packaging:
+
+  b016fe8 Remove “see” alternative for “view”.
+          Thanks to Kevin Ryde <user42@zip.com.au>, Closes: #623384, #458691
+  c5b794b Removed obsolete removal of /usr/doc/mime-support.
+
+  * update-mime:
+
+  5448676 Accept file names with alphanumeric characters from the current
+          locale.  Thanks to Tomás <tomas@tuxteam.de>, Closes: #682900
+  2a2243e Handle the “%c” (caption) field code from Desktop entry files.
+          Thanks to Philipp Matthias Hahn <pmhahn@debian.org>, Closes: #745153
+  c0e8e69 Handle the “%i” (icon) field code from Desktop entry files.
+  5cf809c Stop quoting “%s” when building /etc/mailcap from the files in
+          /usr/lib/mime/packages.
+          Thanks to Peter Chubb <peter.chubb@nicta.com.au>, Closes: #747050
+  f18b89f Warn when mailcap.order refers to packages that do not provide
+          mailcap files.  Closes: #314952
+  7b1947f Reject lines that do not start with a media type.  Closes: #384161
+          This drops support for continuation lines in /usr/lib/mime/packages/.
+
+  * run-mailcap:
+
+  3c3b56c Redirect stdin to the tty when a mailcap entry says needsterminal.
+          Thanks Kevin Ryde <user42@zip.com.au>, Closes: #727173
+  80a1bc7 Remove unreliable permission check. Closes: #691247 thanks to
+          Martin Mares <mj@ucw.cz> and Kevin Ryde <user42@zip.com.au>.
+  e833a8a Stricter pattern for detection of manual pages.
+          Thanks to Philipp Janda, LP: #1300484
+  40f72a7 Force the use of a temporary alias for files containing a space in
+          their name. Closes: #723708 thanks to Kevin Ryde <user42@zip.com.au>.
+  642d6a9 Remind of RFC 1524 in the “SEE ALSO” section of mailcap(5) man page.
+          Closes: #634254
+  dd293ec Run the “file“ command when extension does not tell the media type.
+          Thanks to Reuben Thomas <rrt@sc3d.org>, Closes: #77985
+  56dba74 Remove last-resort guesses of crontabs and man pages.
+
+ -- Charles Plessy <plessy@debian.org>  Wed, 07 May 2014 07:03:23 +0900
+
+mime-support (3.54) unstable; urgency=low
+
+  * Media types:
+  2db1fa2 Added text/vnd.debian.copyright
+  a21f31e mime.types: removed duplicated lines.
+  4d7a093 Correct application/smil to application/smil+xml. (LP: #717459)
+  be78d19 Added application/xslt+xml. (LP: #667595)
+
+  * Packaging
+  571044e Remove the RFC files, as they only contain a link to the Web.
+  79583f3 Do not make activating packages wait for pending triggers.
+
+ -- Charles Plessy <plessy@debian.org>  Sat, 11 May 2013 22:13:30 +0900
+
+mime-support (3.53) unstable; urgency=low
+
+  * Media types:
+  a100b97 Add the .opus file suffix to the audio/ogg media type.
+          Closes: #688383, LP: #1093948
+  8da67da Add text/turtle media type. for .ttl files (Closes: #664824).
+  1d86b38 Add image/jp2 media type for .jp2 and .jpg2 files (Closes: #682856).
+  98c6ac3 Removed the note on compression schemes (see RFC 6713).
+  c7e6eb1 Display reportbug message suggesting to register types to the IANA.
+
+  * Packaging:
+  6a08271 Instruct to report a bug instead of emailing maintainers.
+  51dd6c7 Mark Multi-Arch: foreign. (Closes: #695357)
+  801bd8b Parse Desktop entries to generate mailcap entries.
+          Patch from Brian M. Carlson. (Closes: #497779)
+  a6e8a0f Trigger update-mime for Desktop entry files added in
+          /usr/share/applications.
+  0fb8225 Mention Dpkg triggers in the manual page of update-mime.
+          (Closes: #594915)
+  8b6c149 Delete debhelper log file.
+  734c10e Normalised VCS URLs following Lintian's standard.
+  d649fdc Provide build-arch and build-indep targets (that do nothing).
+  158d5df Normalised debian/control with config-model.
+  67b016c Renamed debian/README debian/copyright.
+  26254f8 Machine-readable Debian copyright file.
+  060229d Disambiguate hyphens in manual pages.
+  a455a4d Corected spelling error in a manual page.
+  9279645 Silent binary-arch target (that does nothing anyway).
+  105047b Removed conglicts on a2ps and metamail, older than oldstable.
+  687feeb Unversionned recommendation on file, satisfied even in oldstable.
+  762a035 Drop dependency on debhelper by pasting code from dh_md5sums.
+  f318e0b Remove 'Debian' from the file name of the change log.
+  5ddd68b Conforms to Policy version 3.9.4.
+
+ -- Charles Plessy <plessy@debian.org>  Sun, 05 May 2013 17:24:50 +0900
+
+mime-support (3.52-2) unstable; urgency=low
+
+  * Adopted by László Böszörményi and Charles Plessy. (Closes: #681640)
+  * Manage the source package with Git in Alioth collab-maint's group.
+    (Closes: #682745)
+
+ -- Charles Plessy <plessy@debian.org>  Sat, 25 Aug 2012 09:31:43 +0900
+
 mime-support (3.52-1) unstable; urgency=low
 
   * removed application/x-httpd-* types (closes: 589384)
@@ -18,8 +151,9 @@ mime-support (3.51-1) unstable; urgency=medium
 
  -- Brian White <bcwhite@pobox.com>  Fri, 12 Nov 2010 20:52:43 +0100
 
+Old Changelog:
 
-mime-support (3.49-1) unstable; urgency=medium
+mime-support (3.49-1) UNRELEASED; urgency=medium
 
   * added numerous new mime.types (closes: 585040, 563067, 578392)
   * can generate local user .mailcap file (closes: 569738, 445267)

@@ -1,14 +1,17 @@
 Source: mime-support
-Build-Depends: debhelper
+Maintainer: Mime-Support Maintainers <mime-support@plessy.org>
+Uploaders: Laszlo Boszormenyi (GCS) <gcs@debian.hu>,
+           Charles Plessy <plessy@debian.org>
 Section: net
 Priority: standard
-Maintainer: Brian White <bcwhite@pobox.com>
-Standards-Version: 3.1.1.1
+Standards-Version: 3.9.5
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/mime-support.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/mime-support.git
 
 Package: mime-support
 Architecture: all
-Conflicts: a2ps(<<4.10.4), metamail(<<2.7-44)
-Recommends: file(>=3.27-3)
+Multi-Arch: foreign
+Recommends: file
 Description: MIME files 'mime.types' & 'mailcap', and support programs
  As these files can be used by all MIME compliant programs, they
  have been moved into their own package that others can depend upon.

@@ -2,7 +2,7 @@
 .\" Update-mime and this manpage were written by Brian White and
 .\" have been placed in the public domain (the only true "free").
 .\"
-.TH UPDATE-MIME 8 "3rd Sep 2010" "Debian Project" "Update MIME Programs"
+.TH UPDATE-MIME 8 "12th Feb 2012" "Debian Project" "Update MIME Programs"
 .SH NAME
 update\-mime \- create or update MIME information
 .SH SYNOPSIS
@@ -115,8 +115,8 @@ When testing for X by looking at the
 .I DISPLAY
 environment variable, please use one of:
 
-        test=test -z "$DISPLAY"     (no X)
-  or    test=test -n "$DISPLAY"     (have X)
+        test=test \-z "$DISPLAY"     (no X)
+  or    test=test \-n "$DISPLAY"     (have X)
 
 Many programs recognize these strings and optimize for them.
 .TP
@@ -173,22 +173,15 @@ should have a name ending in ".gif" by using "nametemplate=%s.gif".
 Packages that wish to provide MIME access to themselves should
 .B not
 depend on, recommend, or suggest
-.B mime-support.
-Instead, they should just put something like the following in the
-.I postinst
-and
-.I postrm
-scripts.
+.B mime-support,
+as the the file they create in
+.I /usr/lib/mime/packages
+will cause
+.B update\-mime
+to be automatically run via a Dpkg trigger.
 
-.ft CW
-.nf
-.ne 4
-\&    if [ -x /usr/sbin/update-mime ]; then
-\&        update-mime
-\&    fi
-.ft R
 .SH "SEE ALSO"
-.BR mailcap.order "(5), RFC-2046, RFC-1524"
+.BR mailcap.order "(5), "deb-triggers "(1), RFC-2046, RFC-1524
 .SH AUTHOR
 .B update\-mime
 was written by Brian White <bcwhite@pobox.com>
