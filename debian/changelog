@@ -1,3 +1,14 @@
+mime-support (3.48-1+deb6u1) squeeze-lts; urgency=high
+
+  [ Salvatore Bonaccorso ]
+  * CVE-2014-7209: run-mailcap shell command injection.
+    Thanks to Timothy D. Morgan for the report.
+
+  [ Charles Plessy ]
+  * DLA-125-1: Applied unmodified Wheezy security patch to Squeeze LTS. 
+
+ -- Charles Plessy <plessy@debian.org>  Mon, 29 Dec 2014 19:43:31 +0900
+
 mime-support (3.48-1) unstable; urgency=medium
 
   * use only "copiousoutput" rules for "cat" action (closes: 533723)
