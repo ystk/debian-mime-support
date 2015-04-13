@@ -180,6 +180,13 @@ will cause
 .B update\-mime
 to be automatically run via a Dpkg trigger.
 
+.SH DESKTOP ENTRIES
+In addition to the abovementioned mechanism
+.B update\-mime
+also parses desktop entries in /usr/share/applications/ to generate
+mailcap entries. These entries are given a lower priority than those
+in /usr/lib/mime/packages.
+
 .SH "SEE ALSO"
 .BR mailcap.order "(5), "deb-triggers "(1), RFC-2046, RFC-1524
 .SH AUTHOR

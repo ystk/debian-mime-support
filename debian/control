@@ -4,7 +4,7 @@ Uploaders: Laszlo Boszormenyi (GCS) <gcs@debian.hu>,
            Charles Plessy <plessy@debian.org>
 Section: net
 Priority: standard
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/mime-support.git
 Vcs-Git: git://anonscm.debian.org/collab-maint/mime-support.git
 

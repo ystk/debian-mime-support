@@ -1,3 +1,32 @@
+mime-support (3.58) unstable; urgency=high
+
+  * CVE-2014-7209: run-mailcap shell command injection.
+    Thanks to Timothy D. Morgan for the report.
+
+  d156797 Escape file name also when not passed through %s.  This
+          avoids command injections using for instance semicolons.
+  b585022 Resolve file name to an absolute path to avoid injection of
+          command arguments with file names starting with dashes etc.
+          Use File::Spec to avoid race conditions with temporary files.
+          Thanks, Salvatore Bonaccorso for the patch.
+
+ -- Charles Plessy <plessy@debian.org>  Sun, 28 Dec 2014 14:45:59 +0900
+
+mime-support (3.57) unstable; urgency=medium
+
+  * Media types added:
+  ef09adf application/x-xz                              Closes: #756754
+
+  * Changed associations of file suffixes with media types:
+  94703d4 a/vnd.debian.binary-package: added ddeb,      closes: #759746
+
+  * Other:
+  b412727 Document support for desktop entries.
+          Thanks to Andreas Metzler <ametzler@bebt.de>, closes: #749771
+  ce09266 Conforms to Policy 3.9.6.
+
+ -- Charles Plessy <plessy@debian.org>  Sat, 04 Oct 2014 20:28:54 +0900
+
 mime-support (3.56) unstable; urgency=medium
 
   * Media types added:

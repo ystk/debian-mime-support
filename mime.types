@@ -165,7 +165,7 @@ application/vnd.cups-postscript
 application/vnd.cups-raster
 application/vnd.cups-raw
 application/vnd.cybank
-application/vnd.debian.binary-package						deb udeb
+application/vnd.debian.binary-package						deb ddeb udeb
 application/vnd.dna
 application/vnd.dpgraph
 application/vnd.dxr
@@ -517,6 +517,7 @@ application/x-x509-ca-cert			crt
 application/x-xcf				xcf
 application/x-xfig				fig
 application/x-xpinstall				xpi
+application/x-xz				xz
 
 audio/32kadpcm
 audio/3gpp
